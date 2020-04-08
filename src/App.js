@@ -18,7 +18,7 @@ class App extends React.Component {
   };
 
   handleChange = event => {
-    console.log("Hi ");
+    console.log("handleChange");
   };
 
   handleSubmit = event => {
@@ -34,15 +34,28 @@ class App extends React.Component {
   };
 
   handleDelete = id => {
-    console.log("handleDelete");
+    console.log(`handleDelete, ${id}`);
   };
   render() {
     return (
       <div>
         <div className="container">
           <div className="row">
-            <TodoInput />
-            <TodoList />
+            <div className="col-10 mx-auto col-md-9 mt-5">
+              <h3 className="text-capitalize text-center"> todo input</h3>
+            </div>
+            <TodoInput
+              items={this.state.item}
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+              handleEdit={this.handleEdit}
+            />
+            <TodoList
+              items={this.state.items}
+              handleClear={this.handleClear}
+              handleDelete={this.handleDelete}
+              handleEdit={this.handleEdit}
+            />
           </div>
         </div>
       </div>
